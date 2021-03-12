@@ -13,5 +13,5 @@ jobs:
         gpg_key: ${{ secrets.PGP_KEY }}
         sona: ${{ secrets.SONA }}
         profile: ${{ secrets.REPO_PROFILE }}
-    - run: echo repo ${{ steps.mc.outputs.repo-id }}
+    - run: echo repository ${{ steps.mc.outputs.repo-id }}
       shell: bash
