@@ -9,7 +9,7 @@ jobs:
     - id: mc
       uses: xdevma/mc-action@v17
       with:
-        version: '2.0.0'
+        version: ${{ secrets.VERSION }}
         gpg_key: ${{ secrets.PGP_KEY }}
         sona: ${{ secrets.SONA }}
         profile: ${{ secrets.REPO_PROFILE }}
