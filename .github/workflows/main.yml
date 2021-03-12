@@ -6,9 +6,9 @@ jobs:
     name: run mc
     steps:
     - uses: actions/checkout@v2
-    - id: foo
+    - id: mc
       uses: xdevma/mc-action@v5
       with:
         version: '2.0.0'
-    - run: echo repo ${{ steps.foo.outputs.repo-id }}
+    - run: echo repo ${{ steps.mc.outputs.repo-id }}
       shell: bash
