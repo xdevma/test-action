@@ -7,8 +7,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - id: mc
-      uses: xdevma/mc-action@v5
+      uses: xdevma/mc-action@v7
       with:
         version: '2.0.0'
+        gpg_key: ${{ secrets.PGP_KEY }}
     - run: echo repo ${{ steps.mc.outputs.repo-id }}
       shell: bash
