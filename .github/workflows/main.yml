@@ -1,10 +1,10 @@
 on: [push]
 
 jobs:
-  mc-action:
-    environment: Release
+  mcs-action:
+    environment: Stage
     runs-on: ubuntu-latest
-    name: run mc action
+    name: run mc stage action
     steps:
     - uses: actions/checkout@v2
     - id: mc
@@ -16,3 +16,15 @@ jobs:
         profile: ${{ secrets.REPO_PROFILE }}
     - run: echo repository ${{ steps.mc.outputs.repo-id }}
       shell: bash
+  mcr-action:
+    needs: mcs-action
+    environment: Release
+    runs-on: ubuntu-latest
+    name: run mc release action
+    steps:
+    - uses: actions/checkout@v2
+    - id: mc
+      uses: xdevma/mc-action@v1r
+      with:
+        sona: ${{ secrets.SONA }}
+        profile: ${{ secrets.REPO_PROFILE }}
