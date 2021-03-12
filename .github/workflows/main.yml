@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - id: mc
-      uses: xdevma/mc-action@v17
+      uses: xdevma/mc-action@v18
       with:
         version: ${{ secrets.VERSION }}
         gpg_key: ${{ secrets.PGP_KEY }}
