@@ -2,12 +2,12 @@ on: [push]
 
 jobs:
   mc-action:
-    runs-on: oraclelinux:7-slim
+    runs-on: ubuntu-latest
     name: A job to say hello
     steps:
     - uses: actions/checkout@v2
     - id: foo
-      uses: xdevma/mc-action@v1
+      uses: xdevma/mc-action@v2
       with:
         version: '1.2'
     - run: echo repo ${{ steps.foo.outputs.repo-id }}
