@@ -10,12 +10,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - id: mc
-      uses: xdevma/mc-action@v19
+      uses: xdevma/mc-action@v120
       with:
         version: ${{ secrets.VERSION }}
         gpg_key: ${{ secrets.PGP_KEY }}
         sona: ${{ secrets.SONA }}
         profile: ${{ secrets.REPO_PROFILE }}
+        gtoken: ${{ secrets.GITHUB_TOKEN }}
     - run: echo repository ${{ steps.mc.outputs.repo-id }}
       shell: bash
   mcr-action:
