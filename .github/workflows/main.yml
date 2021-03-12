@@ -3,7 +3,7 @@ on: [push]
 jobs:
   mc-action:
     runs-on: oraclelinux:7-slim
-    name: A job to say hello
+    name: run mc
     steps:
     - uses: actions/checkout@v2
     - id: foo
