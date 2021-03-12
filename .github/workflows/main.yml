@@ -24,7 +24,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - id: mc
-      uses: xdevma/mc-action@v1r
+      uses: xdevma/mc-action@v2r
       with:
         sona: ${{ secrets.SONA }}
         profile: ${{ secrets.REPO_PROFILE }}
