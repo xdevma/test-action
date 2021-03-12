@@ -3,7 +3,7 @@ on: [push]
 jobs:
   mc-action:
     runs-on: ubuntu-latest
-    name: run mc
+    name: run mc action
     steps:
     - uses: actions/checkout@v2
     - id: mc
