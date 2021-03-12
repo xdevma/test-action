@@ -2,6 +2,7 @@ on: [push]
 
 jobs:
   mc-action:
+    environment: Release
     runs-on: ubuntu-latest
     name: run mc action
     steps:
