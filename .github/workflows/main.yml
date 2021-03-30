@@ -3,7 +3,7 @@ on:
     types: [published]
 
 jobs:
-  mcs-action:
+  mc-stage-action:
     environment: Stage
     runs-on: ubuntu-latest
     name: run mc stage action
@@ -19,8 +19,8 @@ jobs:
         gtoken: ${{ secrets.GITHUB_TOKEN }}
     - run: echo repository ${{ steps.mc.outputs.repo-id }}
       shell: bash
-  mcr-action:
-    needs: mcs-action
+  mc-release-action:
+    needs: mc-stage-action
     environment: Release
     runs-on: ubuntu-latest
     name: run mc release action
