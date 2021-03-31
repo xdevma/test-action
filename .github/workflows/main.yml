@@ -9,7 +9,7 @@ jobs:
     name: run mc stage action
     steps:
     - uses: actions/checkout@v2
-    - id: mc
+    - id: mcs
       uses: xdevma/mc-action@v120
       with:
         version: ${{ secrets.VERSION }}
@@ -17,8 +17,14 @@ jobs:
         sona: ${{ secrets.SONA }}
         profile: ${{ secrets.REPO_PROFILE }}
         gtoken: ${{ secrets.GITHUB_TOKEN }}
-    - run: echo repository ${{ steps.mc.outputs.repo-id }}
+    - run: |
+        echo ${{ steps.mcs.outputs.repo-id }} > repo.id
       shell: bash
+    - name: Upload repo id
+      uses: actions/upload-artifact@v2
+      with:
+        name: repoid
+        path: repo.id
   mc-release-action:
     needs: mc-stage-action
     environment: Release
@@ -26,9 +32,17 @@ jobs:
     name: run mc release action
     steps:
     - uses: actions/checkout@v2
-    - id: mc
+    - name: Download repo id
+      uses: actions/download-artifact@v2
+      with:
+        name: repoid
+    - name: Print the final result
+    shell: bash
+    run: |
+      echo "REPOID=$(cat repo.id)" >> $GITHUB_ENV
+    - id: mcr
       uses: xdevma/mc-action@v2r
       with:
         sona: ${{ secrets.SONA }}
         profile: ${{ secrets.REPO_PROFILE }}
-        repo-id: ${{ steps.mc.outputs.repo-id }}
+        repo-id: ${{ env.REPOID }}
