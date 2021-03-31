@@ -37,9 +37,9 @@ jobs:
       with:
         name: repoid
     - name: Print the final result
-    shell: bash
-    run: |
-      echo "REPOID=$(cat repo.id)" >> $GITHUB_ENV
+      shell: bash
+      run: |
+        echo "REPOID=$(cat repo.id)" >> $GITHUB_ENV
     - id: mcr
       uses: xdevma/mc-action@v2r
       with:
